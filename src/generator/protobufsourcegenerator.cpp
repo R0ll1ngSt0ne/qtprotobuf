@@ -116,7 +116,7 @@ void ProtobufSourceGenerator::printConstructor()
     for (int i = 0; i < mMessage->field_count(); i++) {
         const FieldDescriptor *field = mMessage->field(i);
         std::string fieldTypeName = getTypeName(field, mMessage);
-        std::string fieldName = field->name();
+        std::string fieldName = field->camelcase_name();
         fieldName[0] = static_cast<char>(::tolower(fieldName[0]));
         if (field->is_repeated() || field->is_map()) {
             parameterList += "const " + fieldTypeName + " &" + fieldName;
